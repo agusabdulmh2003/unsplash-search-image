@@ -1,0 +1,12 @@
+body {
+    background: linear-gradient(120deg, #0a0f29, #222);
+    color: #fff;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.dark-mode {
+    background: #111;
+    color: #ddd;
+}
+.transition-bg {
+transition: background 0.5s ease, color 0.5s ease;
+}
