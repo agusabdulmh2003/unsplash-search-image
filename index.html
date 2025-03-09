@@ -3,23 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pencarian Gambar - Pexels</title>
+    <title>AI Image Search - Pexels</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(120deg, #0a0f29, #222);
+            color: #fff;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .dark-mode {
+            background: #111;
+            color: #ddd;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold text-center mb-6">Pencarian Gambar Pexels</h1>
+<body class="text-white">
 
-        <div class="flex justify-center mb-6">
-            <input type="text" id="searchInput" class="w-1/2 p-2 border rounded-l-md" placeholder="Cari gambar...">
-            <button id="searchButton" class="bg-green-500 text-white px-4 py-2 rounded-r-md">Cari</button>
+    <div class="container mx-auto p-6 text-center">
+        <h1 class="text-4xl font-bold mb-6 text-blue-400">🔍 AI Image Search</h1>
+
+        <!-- Dark Mode Switch -->
+        <button id="darkModeToggle" class="mb-4 px-4 py-2 bg-blue-600 rounded-md">🌙 Dark Mode</button>
+
+        <!-- Input Pencarian -->
+        <div class="flex justify-center">
+            <input type="text" id="searchInput" class="w-1/2 p-3 rounded-l-md text-black bg-gray-100 border border-gray-300" placeholder="Cari gambar futuristik...">
+            <button id="searchButton" class="px-4 bg-blue-500 text-white rounded-r-md">Cari</button>
         </div>
 
-        <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <!-- Gambar hasil pencarian akan ditampilkan di sini -->
+        <!-- Galeri -->
+        <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
+            <!-- Gambar akan muncul di sini -->
         </div>
 
-        <div id="loading" class="text-center text-gray-500 my-4 hidden">Memuat lebih banyak...</div>
+        <!-- Loading -->
+        <div id="loading" class="hidden text-center mt-4">🚀 Loading...</div>
+    </div>
+
+    <!-- Modal Lightbox -->
+    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center">
+        <div class="relative">
+            <img id="modalImage" class="max-w-lg rounded-lg">
+            <button id="closeModal" class="absolute top-2 right-2 bg-red-500 px-4 py-2 rounded-md">✖</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
