@@ -11,7 +11,8 @@ let query = "";
 
 // Fungsi ambil gambar dari API Pexels
 async function fetchImages(query, page) {
-    const url = `https://api.pexels.com/v1/search?query=${query}&per_page=12&page=${page}`;
+    const orientation = document.getElementById("orientationFilter").value;
+    const url = `https://api.pexels.com/v1/search?query=${query}&per_page=12&page=${page}&orientation=${orientation}`;
     try {
         const response = await fetch(url, { headers: { Authorization: apiKey } });
         const data = await response.json();
@@ -21,6 +22,7 @@ async function fetchImages(query, page) {
         return [];
     }
 }
+
 
 // Fungsi tampilkan gambar
 function displayImages(images) {
@@ -50,6 +52,29 @@ async function searchImages() {
     displayImages(images);
 
     loading.classList.add("hidden");
+}
+// Fungsi tampilkan gambar dengan tombol download
+function displayImages(images) {
+    images.forEach(image => {
+        const imgContainer = document.createElement("div");
+        imgContainer.classList = "relative group";
+
+        const imgElement = document.createElement("img");
+        imgElement.src = image.src.medium;
+        imgElement.alt = image.photographer;
+        imgElement.classList = "w-full h-64 object-cover rounded-md cursor-pointer transition duration-300 transform hover:scale-105";
+        imgElement.addEventListener("click", () => showModal(image.src.large));
+
+        const downloadButton = document.createElement("a");
+        downloadButton.href = image.src.original;
+        downloadButton.download = "image.jpg";
+        downloadButton.classList = "absolute bottom-2 right-2 bg-blue-500 text-white px-2 py-1 text-sm rounded-md hidden group-hover:block";
+        downloadButton.innerText = "⬇ Download";
+
+        imgContainer.appendChild(imgElement);
+        imgContainer.appendChild(downloadButton);
+        gallery.appendChild(imgContainer);
+    });
 }
 
 // Fungsi infinite scroll

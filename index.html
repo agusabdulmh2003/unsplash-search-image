@@ -29,7 +29,15 @@
         <div class="flex justify-center">
             <input type="text" id="searchInput" class="w-1/2 p-3 rounded-l-md text-black bg-gray-100 border border-gray-300" placeholder="Cari gambar futuristik...">
             <button id="searchButton" class="px-4 bg-blue-500 text-white rounded-r-md">Cari</button>
+            <select id="orientationFilter" class="mt-3 p-2 rounded-md text-black">
+                <option value="">Semua Orientasi</option>
+                <option value="landscape">Landscape</option>
+                <option value="portrait">Portrait</option>
+                <option value="square">Square</option>
+            </select>
+            
         </div>
+        
 
         <!-- Galeri -->
         <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
